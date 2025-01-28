@@ -1,4 +1,4 @@
-# Mexico
+# Mexico :seedling:
 Python code for insight on airbwb booking of Mexico I am using calendar and listing CSV files.
 I have done all the calculation based on data from Mexico https://data.insideairbnb.com/mexico/df/mexico-city/2024-09-25/data/listings.csv.gz 
 https://data.insideairbnb.com/mexico/df/mexico-city/2024-09-25/data/calendar.csv.gz
@@ -9,7 +9,7 @@ calendar = pd.read_csv('calendar.csv')
 ```
 # Questions that you might want to address about the given data :sparkles: :memo:
 
-# 1-Want to know the number of available and unavailable rooms
+# 1-Want to know the number of available and unavailable rooms :bulb:
 
 ```python
 calendar.available.value_counts()
@@ -37,7 +37,7 @@ print("Busiest Dates:")
 print(busiest_dates.head())
 ```
 
-# 4-Plot a bar graph to show availability percentage
+# 4-Plot a bar graph to show availability percentage :technologist:
 
 ```python
 import matplotlib.pyplot as plt
@@ -70,7 +70,7 @@ listings.columns
 ```
 ![image](https://github.com/user-attachments/assets/08c56045-5919-435e-b683-0c5533fcd29b)
 
-# 1-Room type and price is given seperately
+# 1-Room type and price is given seperately :see_no_evil:
 Let`s Combine and visualize them
 ```python
 import matplotlib.pyplot as plt
@@ -104,7 +104,7 @@ plt.show()
 ```
 ![image](https://github.com/user-attachments/assets/749c9ee8-404c-4d8f-8d9e-4473a36fa4b8)
 
-# 3-Geographical Distribution of Listings (Price Colored)
+# 3-Geographical Distribution of Listings (Price Colored) :money_with_wings: 
 ```python
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -146,4 +146,32 @@ m
 ```
 ![image](https://github.com/user-attachments/assets/055b81df-603b-4a8d-87bf-7cac20c404b8)
 
+# Which are the top 10 room types with the most listings in Mexico? :dizzy: 
+```python
+room_type_counts = listings['room_type'].value_counts().head(10)
+print("Top 10 Room Types by Listings:")
+print(room_type_counts)
 
+room_type_counts.plot(kind='bar', color='cornflowerblue')
+plt.title('Top 10 Room Types by Listings')
+plt.ylabel('Number of Listings')
+plt.xlabel('Room Type')
+plt.xticks(rotation=45)
+plt.show()
+```
+![image](https://github.com/user-attachments/assets/d156fc9e-98f6-4d99-8e6c-da7b80929ee5)
+
+# Which dates have the highest availability? :mag:
+```python
+most_available_dates = calendar[calendar['available'] == 't']['date'].value_counts().head(10)
+print("Top 10 Dates with the Most Available Listings:")
+print(most_available_dates)
+
+most_available_dates.plot(kind='bar', color='skyblue')
+plt.title('Top 10 Dates with the Most Availability')
+plt.ylabel('Number of Listings Available')
+plt.xlabel('Date')
+plt.xticks(rotation=45)
+plt.show()
+```
+![image](https://github.com/user-attachments/assets/c57a3866-f746-483f-bc26-1f21a65dda0e)
